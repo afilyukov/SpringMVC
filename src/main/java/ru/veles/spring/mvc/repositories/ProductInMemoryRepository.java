@@ -13,14 +13,14 @@ public class ProductInMemoryRepository implements ProductRepository {
     @PostConstruct
     public void init() {
         products = new ArrayList<>();
-        products.add(121, new Product(121, "Orange", 7));
-        products.add(15, new Product(15, "Spoon", 15));
+        products.add(new Product(121, "Orange", 7));
+        products.add(new Product(15, "Spoon", 15));
     }
 
     @Override
     public void addProduct(Product product) {
         if (product.getId()>0) {
-            if (products.get(product.getId()) == null) {
+            if (!products.contains(product)) {
                 products.add(product);
             } else {
                 throw new IllegalArgumentException("Product is already exist!");
@@ -32,7 +32,10 @@ public class ProductInMemoryRepository implements ProductRepository {
 
     @Override
     public Product getProduct(Product product) {
-        return products.get(product.getId());
+        for (Product p : products) {
+            if (p.getId() == product.getId()) return p;
+        }
+        return null;
     }
 
     @Override
