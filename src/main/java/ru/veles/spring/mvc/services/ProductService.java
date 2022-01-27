@@ -1,13 +1,13 @@
-package ru.geekbrains.spring.mvc.services;
+package ru.veles.spring.mvc.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import ru.geekbrains.spring.mvc.model.Product;
-import ru.geekbrains.spring.mvc.repositories.ProductRepository;
+import ru.veles.spring.mvc.model.Product;
+import ru.veles.spring.mvc.repositories.ProductRepository;
 
-import java.util.Map;
+import java.util.List;
 
 
 @Component
@@ -44,7 +44,7 @@ public class ProductService {
         productRepository.updateProduct(new Product(id, title, cost));
     }
 
-    public Map<Integer, Product> getAll() {
+    public List<Product> getAll() {
         return productRepository.getAll();
     }
 
@@ -57,10 +57,10 @@ public class ProductService {
     }
 
     public int calculateAverageCost() {
-        Map<Integer, Product> products = productRepository.getAll();
+        List<Product> products = productRepository.getAll();
         if (products.isEmpty()) { return 0;}
         int avg = 0;
-        for (Product p : products.values()) {
+        for (Product p : products) {
             avg += (int)p.getCost();
         }
         avg /= products.size();
@@ -68,7 +68,7 @@ public class ProductService {
     }
 
     public int getAmountOfProducts() {
-        Map<Integer, Product> products = productRepository.getAll();
+        List<Product> products = productRepository.getAll();
         if (products.isEmpty()) { return 0;}
         return products.size();
     }

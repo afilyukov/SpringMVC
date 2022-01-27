@@ -1,4 +1,4 @@
-package ru.geekbrains.spring.mvc;
+package ru.veles.spring.mvc;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;

@@ -1,4 +1,4 @@
-package ru.geekbrains.spring.mvc.model;
+package ru.veles.spring.mvc.model;
 
 public class Product {
     private int id;

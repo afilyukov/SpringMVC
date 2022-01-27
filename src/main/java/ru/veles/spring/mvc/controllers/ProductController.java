@@ -1,11 +1,10 @@
-package ru.geekbrains.spring.mvc.controllers;
+package ru.veles.spring.mvc.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.geekbrains.spring.mvc.model.Product;
-import ru.geekbrains.spring.mvc.services.ProductService;
-
+import ru.veles.spring.mvc.model.Product;
+import ru.veles.spring.mvc.services.ProductService;
 
 
 @Controller
@@ -20,7 +19,7 @@ public class ProductController {
 
     @GetMapping("/all")
     public String getAll(Model model) {
-        model.addAttribute("frontProducts", productService.getAll().values());
+        model.addAttribute("frontProducts", productService.getAll());
         return "all_products";
     }
 
