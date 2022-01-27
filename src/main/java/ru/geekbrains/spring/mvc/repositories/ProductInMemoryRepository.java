@@ -4,7 +4,9 @@ import org.springframework.stereotype.Component;
 import ru.geekbrains.spring.mvc.model.Product;
 
 import javax.annotation.PostConstruct;
-import java.util.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 @Component
 public class ProductInMemoryRepository implements ProductRepository {
